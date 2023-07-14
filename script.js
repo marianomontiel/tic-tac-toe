@@ -1,6 +1,6 @@
 const gameBoard = (() =>{
-    const boardArray = ["o","o","o","o","x","o","o","o","o"]
-    
+    const boardArray = []
+    boardArray.length = 9
     
     const boardGrid = document.createElement("div");
     boardGrid.style.display = "grid"
@@ -9,14 +9,39 @@ const gameBoard = (() =>{
     
     for(let i=0; boardArray.length > i; i++){
         let mark = document.createElement("div");
-        mark.innerText = boardArray[i];
+        mark.id = i;
+
+        mark.addEventListener("click", function (){
+            if (mark.innerText === "X" || mark.innerText === "O") {
+                console.log("A play has already been made there")
+            } else {
+                mark.innerText = "X";
+                boardArray[i] = mark.textContent;
+                console.log(boardArray);
+            }
+        })
         boardGrid.appendChild(mark);
     }
-    const body = document.querySelector("body");
-    const asd= body.appendChild(boardGrid);
 
-    return {boardArray, asd};
+
+    const body = document.querySelector("body");
+    const appendDiv= body.appendChild(boardGrid);
+
+    
+
+    return {boardArray, appendDiv};
 })();
 
-console.log(gameBoard.boardArray);
-gameBoard.asd;
+//this is in the works it intends to reset the game. It lacks the appnd function and prob something else I can't point out yet
+const resetGame = (() => {
+    gameBoard.boardArray;
+    const resetButton = document.querySelector("#reset");
+    resetButton.addEventListener("click", function() {
+        for(let i = 0; boardArray.length < i; i++){
+            boardArray[i] = "";
+        }
+    return {boardArray}
+    })
+})()
+
+gameBoard.appendDiv;
