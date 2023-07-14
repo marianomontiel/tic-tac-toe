@@ -1,11 +1,11 @@
 const gameBoard = (() =>{
-    const boardArray = ["x","x","x","o","x","o","x","o","x"]
+    const boardArray = ["o","o","o","o","x","o","o","o","o"]
     
     
     const boardGrid = document.createElement("div");
     boardGrid.style.display = "grid"
-    boardGrid.style.gridTemplateColumns = "repeat(3, 1fr)";
-    boardGrid.style.gridTemplateRows = "repeat(3, 1fr)";
+    boardGrid.style.gridTemplateColumns = "repeat(3, 60px)";
+    boardGrid.style.gridTemplateRows = "repeat(3, 60px)";
     
     for(let i=0; boardArray.length > i; i++){
         let mark = document.createElement("div");
